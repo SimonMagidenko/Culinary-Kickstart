@@ -24,10 +24,10 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, {
-        path: '/profiles/:username',
-        element: <Profile />
+        path: '/search',
+        element: <SearchPage />
       }, {
-        path: '/me',
+        path: '/profile',
         element: <Profile />
       },
     ]
