@@ -1,25 +1,30 @@
 const typeDefs = `
   type User {
     _id: ID
-    username: String
-    email: String
-    password: String
-    thoughts: [Thought]!
+    username: String!
+    email: String!
+    password: String!
+    savedRecipes:[Recipe]
   }
 
-  type Thought {
+  type Review {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    userID: String!
+    text: String!
   }
 
-  type Comment {
+  type Recipe {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    name: String
+    reviews:[Review]
+  }
+
+  type Ingredient {
+    _id: ID
+    name: String
+    quantity: Int
+    measure: String
+    weight: Int
   }
 
   type Auth {
