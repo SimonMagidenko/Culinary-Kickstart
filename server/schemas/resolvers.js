@@ -1,5 +1,10 @@
 const { User, Ingredient, Review, Recipe } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+require('dotenv').config();
+
+const API_ENDPOINT = 'https://api.edamam.com/api/recipes/v2';
+
+const query = 'chicken';
 
 const resolvers = {
   Query: {
@@ -15,6 +20,11 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    searchFood: async (_, {query}) => {
+      const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`)
+      const data = response.json()
+      console.log(data);
+    }
   },
 
   Mutation: {
@@ -40,73 +50,6 @@ const resolvers = {
 
       return { token, user };
     },
-    // addThought: async (parent, { thoughtText }, context) => {
-    //   if (context.user) {
-    //     const thought = await Thought.create({
-    //       thoughtText,
-    //       thoughtAuthor: context.user.username,
-    //     });
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { thoughts: thought._id } }
-    //     );
-
-    //     return thought;
-    //   }
-    //   throw AuthenticationError;
-    //   ('You need to be logged in!');
-    // },
-    // addComment: async (parent, { thoughtId, commentText }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $addToSet: {
-    //           comments: { commentText, commentAuthor: context.user.username },
-    //         },
-    //       },
-    //       {
-    //         new: true,
-    //         runValidators: true,
-    //       }
-    //     );
-    //   }
-    //   throw AuthenticationError;
-    // },
-    // removeThought: async (parent, { thoughtId }, context) => {
-    //   if (context.user) {
-    //     const thought = await Thought.findOneAndDelete({
-    //       _id: thoughtId,
-    //       thoughtAuthor: context.user.username,
-    //     });
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { thoughts: thought._id } }
-    //     );
-
-    //     return thought;
-    //   }
-    //   throw AuthenticationError;
-    // },
-    // removeComment: async (parent, { thoughtId, commentId }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $pull: {
-    //           comments: {
-    //             _id: commentId,
-    //             commentAuthor: context.user.username,
-    //           },
-    //         },
-    //       },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw AuthenticationError;
-    // },
   },
 };
 
