@@ -61,7 +61,9 @@ const Signup = () => {
 
   return (
     <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+
       <Stack align={'center'}>
+        
         <Heading fontSize={'4xl'} textAlign={'center'}>
           Sign up
         </Heading>
@@ -71,6 +73,7 @@ const Signup = () => {
         </Text>
 
       </Stack>
+      
       <Box
         rounded={'lg'}
         bg={useColorModeValue('white', 'gray.700')}
@@ -83,7 +86,6 @@ const Signup = () => {
             <FormLabel>Username</FormLabel>
             <Input onChange={handleChange} value={formState.username} name="username" type="text" />
           </FormControl>
-
 
           <FormControl id="email" isRequired>
             <FormLabel>Email address</FormLabel>
@@ -122,6 +124,7 @@ const Signup = () => {
               Already a user? <Link color={'blue.400'}>Login</Link>
             </Text>
           </Stack>
+          
         </Stack>
       </Box>
     </Stack>
