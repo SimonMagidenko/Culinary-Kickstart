@@ -17,6 +17,8 @@ const typeDefs = `
     _id: ID
     name: String
     reviews:[Review]
+    ingredient: [Ingredient]
+    image: String
   }
 
   type Ingredient {
