@@ -1,10 +1,30 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  HStack,
+  InputRightElement,
+  Stack,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+  Link,
+} from '@chakra-ui/react'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
+
 import Auth from '../utils/auth';
+import { handleError } from '@apollo/client/link/http/parseAndCheckHttpResponse';
+
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -12,6 +32,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
+  const [showPassword, setShowPassword] = useState(false)
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
@@ -39,61 +60,71 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+    <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      <Stack align={'center'}>
+        <Heading fontSize={'4xl'} textAlign={'center'}>
+          Sign up
+        </Heading>
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </main>
+        <Text fontSize={'lg'} color={'gray.600'}>
+          to enjoy all of our cool features ✌️
+        </Text>
+
+      </Stack>
+      <Box
+        rounded={'lg'}
+        bg={useColorModeValue('white', 'gray.700')}
+        boxShadow={'lg'}
+        p={8}>
+
+        <Stack spacing={4}>
+
+          <FormControl id="username" isRequired>
+            <FormLabel>Username</FormLabel>
+            <Input onChange={handleChange} value={formState.username} name="username" type="text" />
+          </FormControl>
+
+
+          <FormControl id="email" isRequired>
+            <FormLabel>Email address</FormLabel>
+            <Input onChange={handleChange} value={formState.email} name="email" type="email" />
+          </FormControl>
+
+          <FormControl id="password" isRequired>
+            <FormLabel>Password</FormLabel>
+            <InputGroup>
+              <Input onChange={handleChange} value={formState.password} name="password" type={showPassword ? 'text' : 'password'} />
+              <InputRightElement h={'full'}>
+                <Button
+                  variant={'ghost'}
+                  onClick={() => setShowPassword((showPassword) => !showPassword)}>
+                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+
+          <Stack spacing={10} pt={2}>
+            <Button onClick={handleFormSubmit}
+              loadingText="Submitting"
+              size="lg"
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.500',
+              }}>
+              Sign up
+            </Button>
+          </Stack>
+
+          <Stack pt={6}>
+            <Text align={'center'}>
+              Already a user? <Link color={'blue.400'}>Login</Link>
+            </Text>
+          </Stack>
+        </Stack>
+      </Box>
+    </Stack>
   );
 };
 
