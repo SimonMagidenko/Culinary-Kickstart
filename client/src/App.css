@@ -1182,15 +1182,10 @@ label form [type="radio"] {
 }
 
 .container {
-<<<<<<< HEAD
   width: 100%;
-  /* max-width: 1200px; */
-=======
-  width: 85%;
   max-width: 1200px;
->>>>>>> 7141b743ae73060fe68b66fb46ecfd158c611b64
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container.container-fluid {
