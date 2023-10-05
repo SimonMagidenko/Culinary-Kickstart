@@ -17,5 +17,7 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.1",
+    "react-icons": "^4.11.0"
   }
 }

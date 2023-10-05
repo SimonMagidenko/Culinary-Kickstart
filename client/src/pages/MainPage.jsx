@@ -1,17 +1,15 @@
 import { useQuery } from "@apollo/client";
 
-
-import { QUERY_THOUGHTS } from "../utils/queries";
-
+import SideBarNav from "../components/SideNavBar/SideNavBar";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
-
+  const styles = {
+    main: {},
+  };
   return (
-    <>
-    <p>hello</p>
-    </>
+    <div className="main" style={styles.main}>
+      <SideBarNav />
+    </div>
   );
 };
 
