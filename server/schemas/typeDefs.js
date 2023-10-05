@@ -17,16 +17,8 @@ const typeDefs = `
     _id: ID
     name: String
     reviews:[Review]
-    ingredient: [Ingredient]
+    ingredient: [String]
     image: String
-  }
-
-  type Ingredient {
-    _id: ID
-    name: String
-    quantity: Int
-    measure: String
-    weight: Int
   }
 
   type Auth {
