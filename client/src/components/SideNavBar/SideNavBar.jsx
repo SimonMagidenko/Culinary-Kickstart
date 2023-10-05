@@ -1,45 +1,56 @@
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
 
-import Auth from '../../utils/auth';
+// ICONS
+import * as FaIcons from "react-icons/fa"; //Now i get access to all the icons
+import * as AiIcons from "react-icons/ai";
 
-const Header = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+import { IconContext } from "react-icons";
+
+// ROUTING
+
+import { Link } from "react-router-dom";
+
+// DATA FILE
+import { SidebarData } from "./SlidebarData";
+
+// STYLES
+import "./SideNavBar.css";
+
+export default function SideBarNav() {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+    <>
+      <IconContext.Provider value={{ color: "#FDF5E6" }}>
+        {/* All the icons now are white */}
+        <div className="navbar">
+          <Link to="#" className="menu-bars">
+            <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
         </div>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
+        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+          <ul className="nav-menu-items" onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars">
+                <AiIcons.AiOutlineClose />
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-};
+            </li>
 
-export default Header;
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
+  );
+}
