@@ -31,7 +31,7 @@ const SearchPage = () => {
   return (
     <>
       <form action="" id="searchForm" onSubmit={submitHandler}>
-        <div>
+        <div id="input">
           <label htmlFor="searchBar">Search</label>
           <Input id="searchBar"
             placeholder="Search for Recipes"
@@ -40,7 +40,7 @@ const SearchPage = () => {
           ></Input>
           <button id="searchBtn">Search</button>
         </div>
-        <div className="dietRestrictions">
+        <div className="dietRestrictions" id="HStack">
           <h2>Diet Restrictions:</h2>
           <HStack className="dietRestrictionsContainer">
             <div
