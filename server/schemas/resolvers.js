@@ -1,5 +1,9 @@
+const { ConnectionStates } = require('mongoose');
 const { User, Ingredient, Review, Recipe } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+
+const API_ID = process.env.API_ID;
+const API_KEY = process.env.API_KEY;
 
 const resolvers = {
   Query: {
@@ -15,6 +19,17 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    searchFood: async (_, { query }) => {
+      try {
+        console.log(API_ID);
+        const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${API_ID}&app_key=${API_KEY}`)
+        const data = await response.json()
+        console.log(data);
+        return data
+      } catch (error) {
+        return error
+      }
+    }
   },
 
   Mutation: {
