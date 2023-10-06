@@ -20,11 +20,6 @@ export default function SideBarNav() {
   return (
     <IconContext.Provider value={{ color: "#FDF5E6" }}>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <Link to="/">
-          <div className="logoContainer">
-            <p>Culinary Kickstart</p>
-          </div>
-        </Link>
         <ul className="nav-menu-items">
           {SidebarData.map((item, index) => {
             return (
