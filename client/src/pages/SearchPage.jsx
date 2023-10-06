@@ -22,19 +22,11 @@ import {
 const SearchPage = () => {
   const { loading, data } = useQuery(QUERY_GRAB_API)
   const apiData = data?.grabAPI || {}
-  // console.log(apiData);
-
-  // const onChangeHandler = (event) => {
-  //   const {name, value} = event.target;
-  //   setSearchParam(value);
-  // };
-  // console.log(searchBarQuery);
 
   const [dietType, setSearchParam] = useState("");
   const [query, setQuery] = useState("");
-  // const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
-  // const apiData = data?.searchFood || {}
-  console.log(apiData);
+  const [recipes, setRecipes] = useState([]);
+  console.log(recipes);
 
   const onClickHandler = (dietRestriction) => {
     if (dietType === dietRestriction) {
@@ -56,21 +48,17 @@ const SearchPage = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    // if (!searchBarQuery) {
-
     if (!query) {
       return false
     }
 
     try {
-      // console.log(searchBarQuery);
-      // const response = await searchFoodAPI(searchBarQuery, apiData.api_id, apiData.api_key);
 
-      console.log(query);
-      const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key);
+      const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key, dietType);
       console.log(response);
       const searchData = await response.json()
-      console.log(searchData);
+      
+      setRecipes(searchData.recipes);
     } catch (error) {
 
     }
@@ -98,53 +86,46 @@ const SearchPage = () => {
           <h2>Diet Restrictions:</h2>
           <HStack className="dietRestrictionsContainer">
             <div
-              className={`dietRestriction ${isSelected("Dairy-Free") ? "selected" : ""
+              className={`dietRestriction ${isSelected("balanced") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Dairy-Free")}
+              onClick={() => onClickHandler("balanced")}
             >
-              Dairy-Free
+              Balanced
             </div>
             <div
-              className={`dietRestriction ${isSelected("Gluten-Free") ? "selected" : ""
+              className={`dietRestriction ${isSelected("high-fiber") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Gluten-Free")}
+              onClick={() => onClickHandler("high-fiber")}
             >
-              Gluten-Free
+              High Fiber
             </div>
             <div
-              className={`dietRestriction ${isSelected("Vegetarian") ? "selected" : ""
+              className={`dietRestriction ${isSelected("high-protein") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Vegetarian")}
+              onClick={() => onClickHandler("high-protein")}
             >
-              Vegetarian
+              High Protein
             </div>
             <div
-              className={`dietRestriction ${isSelected("Vegan") ? "selected" : ""
+              className={`dietRestriction ${isSelected("low-carb") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Vegan")}
+              onClick={() => onClickHandler("low-carb")}
             >
-              Vegan
+              Low Carb
             </div>
             <div
-              className={`dietRestriction ${isSelected("Tree Nut-Free") ? "selected" : ""
+              className={`dietRestriction ${isSelected("low-fat") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Tree Nut-Free")}
+              onClick={() => onClickHandler("low-fat")}
             >
-              Tree Nut-Free
+              Low Fat
             </div>
             <div
-              className={`dietRestriction ${isSelected("Soy-Free") ? "selected" : ""
+              className={`dietRestriction ${isSelected("low-sodium") ? "selected" : ""
                 }`}
-              onClick={() => onClickHandler("Soy-Free")}
+              onClick={() => onClickHandler("low-sodium")}
             >
-              Soy-Free
-            </div>
-            <div
-              className={`dietRestriction ${isSelected("Keto-Friendly") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("Keto-Friendly")}
-            >
-              Keto-Friendly
+              Low Sodium
             </div>
           </HStack>
         </div>
