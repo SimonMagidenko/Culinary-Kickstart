@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import { QUERY_SEARCH_FOOD } from "../utils/queries";
+import { QUERY_GRAB_API } from "../utils/queries";
 import { searchFoodAPI } from '../utils/API';
 import SideBarNav from "../components/SideNavBar/SideNavBar";
 
@@ -20,10 +20,20 @@ import {
 } from "@chakra-ui/react";
 
 const SearchPage = () => {
+  const {loading, data} = useQuery(QUERY_GRAB_API)
+  const apiData = data?.grabAPI || {}
+  // console.log(apiData);
+
+  // const onChangeHandler = (event) => {
+  //   const {name, value} = event.target;
+  //   setSearchParam(value);
+  // };
+  // console.log(searchBarQuery);
+
   const [searchParam, setSearchParam] = useState("");
   const [query, setQuery] = useState("");
-  const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
-  const apiData = data?.searchFood || {}
+  // const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
+  // const apiData = data?.searchFood || {}
   console.log(apiData);
 
   const onClickHandler = (dietRestriction) => {
@@ -46,11 +56,16 @@ const SearchPage = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
+    // if (!searchBarQuery) {
+
     if (!query) {
       return false
     }
 
     try {
+      // console.log(searchBarQuery);
+      // const response = await searchFoodAPI(searchBarQuery, apiData.api_id, apiData.api_key);
+
       console.log(query);
       const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key);
       console.log(response);

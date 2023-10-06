@@ -21,9 +21,9 @@ export const QUERY_USER = gql`
 }
 `;
 
-export const QUERY_SEARCH_FOOD = gql`
-query searchFood {
-  searchFood {
+export const QUERY_GRAB_API = gql`
+query GrabAPI {
+  grabAPI {
     api_id
     api_key
   }
