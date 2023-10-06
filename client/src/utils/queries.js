@@ -21,6 +21,14 @@ export const QUERY_USER = gql`
 }
 `;
 
+export const QUERY_SEARCH_FOOD = gql`
+query searchFood {
+  searchFood {
+    api_id
+    api_key
+  }
+}
+`;
 
 export const QUERY_ME = gql`
   query getMe {

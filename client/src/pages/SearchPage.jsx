@@ -2,6 +2,8 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import { QUERY_SEARCH_FOOD } from "../utils/queries";
+import { searchFoodAPI } from '../utils/API';
 import SideBarNav from "../components/SideNavBar/SideNavBar";
 
 import {
@@ -19,6 +21,9 @@ import {
 
 const SearchPage = () => {
   const [searchParam, setSearchParam] = useState("");
+  const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
+  const apiData = data?.searchFood || {}
+  console.log(apiData);
 
   const onClickHandler = (dietRestriction) => {
     if (searchParam === dietRestriction) {
@@ -31,8 +36,28 @@ const SearchPage = () => {
     return searchParam === dietRestriction;
   };
 
-  const submitHandler = (event) => {
+  const onChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setSearchParam(value);
+
+  };
+
+  const submitHandler = async (event) => {
     event.preventDefault();
+
+    if (!searchParam) {
+      return false
+    }
+
+    try {
+      console.log(searchParam);
+      const response = await searchFoodAPI(searchParam, apiData.api_id, apiData.api_key);
+      console.log(response);
+      const searchData = await response.json()
+      console.log(searchData);
+    } catch (error) {
+
+    }
   };
 
   return (
@@ -40,15 +65,18 @@ const SearchPage = () => {
       <div className="sideBarNavContainer">
         <SideBarNav />
       </div>
-      <form action="" id="searchForm" onSubmit={submitHandler}>
+      <form id="searchForm" onSubmit={submitHandler}>
         <div id="input">
           <Input
+
             id="searchBar"
             placeholder="Search for Recipes"
-            name="search"
+            name="searchParam"
+            value={searchParam}
+            onChange={onChangeHandler}
             type="text"
           ></Input>
-          <button id="searchBtn">Search</button>
+          <button type="submit" id="searchBtn">Search</button>
         </div>
         <div className="dietRestrictions" id="HStack">
           <h2>Diet Restrictions:</h2>
