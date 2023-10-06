@@ -26,11 +26,16 @@ const typeDefs = `
     user: User
   }
 
+  type API{
+    api_id: String!
+    api_key: String!
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
     me: User
-    searchFood(query: String!): Recipe
+    searchFood: API
   }
 
   type Mutation {

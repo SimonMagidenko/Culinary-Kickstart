@@ -15,21 +15,13 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
-    }
+export const QUERY_SEARCH_FOOD = gql`
+query searchFood {
+  searchFood {
+    api_id
+    api_key
   }
+}
 `;
 
 export const QUERY_ME = gql`
