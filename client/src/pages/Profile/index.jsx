@@ -1,6 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { QUERY_USER, QUERY_ME } from "../../utils/queries";
 import {
   Heading,
   Avatar,
@@ -11,7 +11,7 @@ import {
   Image,
   Flex,
   Text,
-    Stack,
+  Stack,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -22,7 +22,7 @@ import HeaderBar from "../../components/Header/Header";
 import Auth from "../../utils/auth";
 
 const Profile = () => {
-  const {loading, data} = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME);
 
   const userData = data?.me || {}
 
