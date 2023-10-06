@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 
 const SearchPage = () => {
-  const {loading, data} = useQuery(QUERY_GRAB_API)
+  const { loading, data } = useQuery(QUERY_GRAB_API)
   const apiData = data?.grabAPI || {}
   // console.log(apiData);
 
@@ -30,14 +30,14 @@ const SearchPage = () => {
   // };
   // console.log(searchBarQuery);
 
-  const [searchParam, setSearchParam] = useState("");
+  const [dietType, setSearchParam] = useState("");
   const [query, setQuery] = useState("");
   // const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
   // const apiData = data?.searchFood || {}
   console.log(apiData);
 
   const onClickHandler = (dietRestriction) => {
-    if (searchParam === dietRestriction) {
+    if (dietType === dietRestriction) {
       setSearchParam(null);
     } else {
       setSearchParam(dietRestriction);
@@ -45,7 +45,7 @@ const SearchPage = () => {
   };
 
   const isSelected = (dietRestriction) => {
-    return searchParam === dietRestriction;
+    return dietType === dietRestriction;
   };
 
   const onChangeHandler = (event) => {
