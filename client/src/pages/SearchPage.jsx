@@ -1,11 +1,10 @@
-
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_GRAB_API } from "../utils/queries";
-import { searchFoodAPI } from '../utils/API';
+import { searchFoodAPI } from "../utils/API";
 import SideBarNav from "../components/SideNavBar/SideNavBar";
-
+import HeaderBar from "../components/Header/Header";
 import {
   Button,
   Checkbox,
@@ -20,8 +19,8 @@ import {
 } from "@chakra-ui/react";
 
 const SearchPage = () => {
-  const { loading, data } = useQuery(QUERY_GRAB_API)
-  const apiData = data?.grabAPI || {}
+  const { loading, data } = useQuery(QUERY_GRAB_API);
+  const apiData = data?.grabAPI || {};
 
   const [dietType, setSearchParam] = useState("");
   const [query, setQuery] = useState("");
@@ -49,90 +48,131 @@ const SearchPage = () => {
     event.preventDefault();
 
     if (!query) {
-      return false
+      return false;
     }
 
     try {
-
-      const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key, dietType);
+      const response = await searchFoodAPI(
+        query,
+        apiData.api_id,
+        apiData.api_key,
+        dietType
+      );
       console.log(response);
-      const searchData = await response.json()
-      
-      setRecipes(searchData.recipes);
-    } catch (error) {
+      const searchData = await response.json();
 
-    }
+      setRecipes(searchData.recipes);
+    } catch (error) {}
+  };
+
+  const styles = {
+    main: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "stretch",
+      height: "100vh",
+    },
+    mainFlexContainer: {
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignContent: "flex-start",
+    },
+    sideBarNav: {
+      display: "inline-flex",
+      flexDirection: "column",
+      position: "relative",
+      width: "7vw",
+    },
+    searchContainer: {
+      width: "100vw",
+    },
   };
 
   return (
     <>
-      <div className="sideBarNavContainer">
-        <SideBarNav />
-      </div>
-      <form id="searchForm" onSubmit={submitHandler}>
-        <div id="input">
-          <Input
-
-            id="searchBar"
-            placeholder="Search for Recipes"
-            name="query"
-            value={query}
-            onChange={onChangeHandler}
-            type="text"
-          ></Input>
-          <button type="submit" id="searchBtn">Search</button>
+      <div className="main" style={styles.main}>
+        <div className="headerBar" style={styles.headerBar}>
+          <HeaderBar />
         </div>
-        <div className="dietRestrictions" id="HStack">
-          <h2>Diet Restrictions:</h2>
-          <HStack className="dietRestrictionsContainer">
-            <div
-              className={`dietRestriction ${isSelected("balanced") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("balanced")}
-            >
-              Balanced
+        <div className="mainFlexContainer" style={styles.mainFlexContainer}>
+          <div className="sideBarNav" style={styles.sideBarNav}>
+            <SideBarNav />
+          </div>
+          <div className="searchContainer" style={styles.searchContainer}>
+            <form id="searchForm" onSubmit={submitHandler}>
+              <div id="input">
+                <Input
+                  id="searchBar"
+                  placeholder="Search for Recipes"
+                  name="query"
+                  value={query}
+                  onChange={onChangeHandler}
+                  type="text"
+                ></Input>
+                <button type="submit" id="searchBtn">
+                  Search
+                </button>
+              </div>
+              <div className="dietRestrictions" id="HStack">
+                <h2>Diet Restrictions:</h2>
+                <HStack className="dietRestrictionsContainer">
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("balanced") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("balanced")}
+                  >
+                    Balanced
+                  </div>
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("high-fiber") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("high-fiber")}
+                  >
+                    High Fiber
+                  </div>
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("high-protein") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("high-protein")}
+                  >
+                    High Protein
+                  </div>
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-carb") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-carb")}
+                  >
+                    Low Carb
+                  </div>
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-fat") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-fat")}
+                  >
+                    Low Fat
+                  </div>
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-sodium") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-sodium")}
+                  >
+                    Low Sodium
+                  </div>
+                </HStack>
+              </div>
+            </form>
+            <div>
+              <h2>Search Results:</h2>
+              {/* <RecipeCard></RecipeCard> */}
             </div>
-            <div
-              className={`dietRestriction ${isSelected("high-fiber") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("high-fiber")}
-            >
-              High Fiber
-            </div>
-            <div
-              className={`dietRestriction ${isSelected("high-protein") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("high-protein")}
-            >
-              High Protein
-            </div>
-            <div
-              className={`dietRestriction ${isSelected("low-carb") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("low-carb")}
-            >
-              Low Carb
-            </div>
-            <div
-              className={`dietRestriction ${isSelected("low-fat") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("low-fat")}
-            >
-              Low Fat
-            </div>
-            <div
-              className={`dietRestriction ${isSelected("low-sodium") ? "selected" : ""
-                }`}
-              onClick={() => onClickHandler("low-sodium")}
-            >
-              Low Sodium
-            </div>
-          </HStack>
+          </div>
         </div>
-      </form>
-      <div>
-        <h2>Search Results:</h2>
-        {/* <RecipeCard></RecipeCard> */}
       </div>
     </>
   );
