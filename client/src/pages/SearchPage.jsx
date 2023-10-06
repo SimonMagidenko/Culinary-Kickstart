@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import { QUERY_SEARCH_FOOD } from "../utils/queries";
+import { QUERY_GRAB_API } from "../utils/queries";
 import { searchFoodAPI } from '../utils/API';
 import SideBarNav from "../components/SideNavBar/SideNavBar";
 
@@ -20,27 +20,31 @@ import {
 } from "@chakra-ui/react";
 
 const SearchPage = () => {
-  const [searchParam, setSearchParam] = useState("");
-  const {loading, data} = useQuery(QUERY_SEARCH_FOOD)
-  const apiData = data?.searchFood || {}
+  const [searchBarQuery, setSearchParam] = useState("");
+  const {loading, data} = useQuery(QUERY_GRAB_API)
+  const apiData = data?.grabAPI || {}
   console.log(apiData);
+
+  const onClickHandler = () => {
+
+  }
 
   const onChangeHandler = (event) => {
     const {name, value} = event.target;
     setSearchParam(value);
   };
-  console.log(searchParam);
+  console.log(searchBarQuery);
 
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    if (!searchParam) {
+    if (!searchBarQuery) {
       return false
     }
 
     try {
-      console.log(searchParam);
-      const response = await searchFoodAPI(searchParam, apiData.api_id, apiData.api_key);
+      console.log(searchBarQuery);
+      const response = await searchFoodAPI(searchBarQuery, apiData.api_id, apiData.api_key);
       console.log(response);
       const searchData = await response.json()
       console.log(searchData);
@@ -61,8 +65,8 @@ const SearchPage = () => {
 
             id="searchBar"
             placeholder="Search for Recipes"
-            name="searchParam"
-            value={searchParam}
+            name="searchBarQuery"
+            value={searchBarQuery}
             onChange={onChangeHandler}
             type="text"
           ></Input>

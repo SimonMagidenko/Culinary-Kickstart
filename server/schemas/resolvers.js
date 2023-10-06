@@ -19,7 +19,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    searchFood: async () => {
+    grabAPI: async () => {
       try {
         // console.log(API_ID);
         // const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${API_ID}&app_key=${API_KEY}`)
