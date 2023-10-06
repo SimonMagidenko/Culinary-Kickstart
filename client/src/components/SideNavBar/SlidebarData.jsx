@@ -11,7 +11,7 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Search Recipes",
+    title: "Search",
     path: "/search",
     icon: <BsIcons.BsSearch />,
     cName: "nav-text",
