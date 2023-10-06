@@ -14,47 +14,24 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-
+import "./Profile.css";
 // import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import SideBarNav from "../components/SideNavBar/SideNavBar";
-import HeaderBar from "../components/Header/Header";
-import Auth from "../utils/auth";
+import SideBarNav from "../../components/SideNavBar/SideNavBar";
+import HeaderBar from "../../components/Header/Header";
+import Auth from "../../utils/auth";
 
 const Profile = () => {
-  const styles = {
-    main: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "stretch",
-      height: "100vh",
-    },
-    mainFlexContainer: {
-      display: "inline-flex",
-      justifyContent: "flex-start",
-      alignContent: "flex-start",
-    },
-    sideBarNav: {
-      display: "inline-flex",
-      flexDirection: "column",
-      position: "relative",
-      width: "7vw",
-    },
-    searchContainer: {
-      width: "100vw",
-    },
-  };
-
   return (
     <>
       <div className="main">
-        <div className="headerBar" style={styles.headerBar}>
+        <div className="headerBar">
           <HeaderBar />
         </div>
-        <div className="mainFlexContainer" style={styles.mainFlexContainer}>
-          <div className="sideBarNav" style={styles.sideBarNav}>
+        <div className="mainFlexContainer">
+          <div className="sideBarNav">
             <SideBarNav />
           </div>
-          <div className="searchContainer" style={styles.searchContainer}>
+          <div className="searchContainer">
             <Grid
               h="100vh"
               w="100vw"

@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.sideBarNav {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  width: 7vw;
+}
+
+.searchContainer {
+  width: 100vw;
+}

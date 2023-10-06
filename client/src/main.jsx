@@ -7,7 +7,7 @@ import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import SearchPage from "./pages/SearchPage.jsx";
+import SearchPage from "./pages/SearchPage/index.jsx";
 import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([

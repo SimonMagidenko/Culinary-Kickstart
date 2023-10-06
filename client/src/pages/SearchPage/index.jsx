@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import { QUERY_GRAB_API } from "../utils/queries";
-import { searchFoodAPI } from "../utils/API";
-import SideBarNav from "../components/SideNavBar/SideNavBar";
-import HeaderBar from "../components/Header/Header";
+import { QUERY_GRAB_API } from "../../utils/queries";
+import { searchFoodAPI } from "../../utils/API";
+import SideBarNav from "../../components/SideNavBar/SideNavBar";
+import HeaderBar from "../../components/Header/Header";
 import {
   Button,
   Checkbox,
@@ -17,6 +17,7 @@ import {
   HStack,
   Image,
 } from "@chakra-ui/react";
+import "./SearchPage.css";
 
 const SearchPage = () => {
   const { loading, data } = useQuery(QUERY_GRAB_API);
@@ -65,40 +66,17 @@ const SearchPage = () => {
     } catch (error) {}
   };
 
-  const styles = {
-    main: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "stretch",
-      height: "100vh",
-    },
-    mainFlexContainer: {
-      display: "inline-flex",
-      justifyContent: "flex-start",
-      alignContent: "flex-start",
-    },
-    sideBarNav: {
-      display: "inline-flex",
-      flexDirection: "column",
-      position: "relative",
-      width: "7vw",
-    },
-    searchContainer: {
-      width: "100vw",
-    },
-  };
-
   return (
     <>
-      <div className="main" style={styles.main}>
-        <div className="headerBar" style={styles.headerBar}>
+      <div className="main">
+        <div className="headerBar">
           <HeaderBar />
         </div>
-        <div className="mainFlexContainer" style={styles.mainFlexContainer}>
-          <div className="sideBarNav" style={styles.sideBarNav}>
+        <div className="mainFlexContainer">
+          <div className="sideBarNav">
             <SideBarNav />
           </div>
-          <div className="searchContainer" style={styles.searchContainer}>
+          <div className="searchContainer">
             <form id="searchForm" onSubmit={submitHandler}>
               <div id="input">
                 <Input
