@@ -18,23 +18,17 @@ import {
   HStack,
   Image,
 } from "@chakra-ui/react";
+import RecipeCard from "../components/RecipeCard/RecipeCard";
+import { BiSolidObjectsHorizontalCenter } from "react-icons/bi";
 
 const SearchPage = () => {
   const { loading, data } = useQuery(QUERY_GRAB_API)
   const apiData = data?.grabAPI || {}
-  // console.log(apiData);
-
-  // const onChangeHandler = (event) => {
-  //   const {name, value} = event.target;
-  //   setSearchParam(value);
-  // };
-  // console.log(searchBarQuery);
 
   const [dietType, setSearchParam] = useState("");
   const [query, setQuery] = useState("");
-  // const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
-  // const apiData = data?.searchFood || {}
-  console.log(apiData);
+  const [recipes, setRecipes] = useState([]);
+  console.log(recipes)
 
   const onClickHandler = (dietRestriction) => {
     if (dietType === dietRestriction) {
@@ -56,20 +50,15 @@ const SearchPage = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    // if (!searchBarQuery) {
-
     if (!query) {
       return false
     }
 
     try {
-      // console.log(searchBarQuery);
-      // const response = await searchFoodAPI(searchBarQuery, apiData.api_id, apiData.api_key);
-
-      console.log(query);
       const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key);
-      console.log(response);
+
       const searchData = await response.json()
+      setRecipes(searchData.hits);
       console.log(searchData);
     } catch (error) {
 
@@ -84,7 +73,6 @@ const SearchPage = () => {
       <form id="searchForm" onSubmit={submitHandler}>
         <div id="input">
           <Input
-
             id="searchBar"
             placeholder="Search for Recipes"
             name="query"
@@ -151,7 +139,7 @@ const SearchPage = () => {
       </form>
       <div>
         <h2>Search Results:</h2>
-        {/* <RecipeCard></RecipeCard> */}
+        <RecipeCard recipes={recipes}></RecipeCard>
       </div>
     </>
   );
