@@ -21,6 +21,7 @@ import {
 
 const SearchPage = () => {
   const [searchParam, setSearchParam] = useState("");
+  const [query, setQuery] = useState("");
   const { loading, data } = useQuery(QUERY_SEARCH_FOOD)
   const apiData = data?.searchFood || {}
   console.log(apiData);
@@ -32,26 +33,26 @@ const SearchPage = () => {
       setSearchParam(dietRestriction);
     }
   };
+
   const isSelected = (dietRestriction) => {
     return searchParam === dietRestriction;
   };
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setSearchParam(value);
-
+    setQuery(value);
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    if (!searchParam) {
+    if (!query) {
       return false
     }
 
     try {
-      console.log(searchParam);
-      const response = await searchFoodAPI(searchParam, apiData.api_id, apiData.api_key);
+      console.log(query);
+      const response = await searchFoodAPI(query, apiData.api_id, apiData.api_key);
       console.log(response);
       const searchData = await response.json()
       console.log(searchData);
@@ -71,8 +72,8 @@ const SearchPage = () => {
 
             id="searchBar"
             placeholder="Search for Recipes"
-            name="searchParam"
-            value={searchParam}
+            name="query"
+            value={query}
             onChange={onChangeHandler}
             type="text"
           ></Input>
