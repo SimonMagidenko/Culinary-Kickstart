@@ -1,0 +1,7 @@
+.logoTitle {
+  display: flex;
+  color: #fdf5e6;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
