@@ -1,5 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import {
   Heading,
   Avatar,
@@ -10,7 +11,7 @@ import {
   Image,
   Flex,
   Text,
-  Stack,
+    Stack,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -21,6 +22,24 @@ import HeaderBar from "../components/Header/Header";
 import Auth from "../utils/auth";
 
 const Profile = () => {
+
+  const {loading, data} = useQuery(QUERY_ME);
+
+  const userData = data?.me || {}
+
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+
+  if (!userData.username) {
+    return (
+      <h4>
+        You need to be logged in to see this. Use the navigation links above to
+        sign up or log in!
+      </h4>
+    );
+  }
+
   const styles = {
     main: {
       display: "flex",
@@ -41,7 +60,7 @@ const Profile = () => {
     },
     searchContainer: {
       width: "100vw",
-    },
+    }
   };
 
   return (
@@ -68,9 +87,9 @@ const Profile = () => {
 
                 <Center py={6}>
                   <Box
-                    maxW={"450"}
+                    maxW={"500px"}
                     w={"90vw"}
-                    maxH={"1000px"}
+                    maxH={"900px"}
                     h={"full"}
                     bg={useColorModeValue("white", "gray.800")}
                     boxShadow={"2xl"}
@@ -78,7 +97,7 @@ const Profile = () => {
                     overflow={"hidden"}
                   >
                     <Image
-                      h={"450px"}
+                      h={"250px"}
                       w={"full"}
                       src={
                         "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
@@ -105,7 +124,7 @@ const Profile = () => {
                           fontWeight={500}
                           fontFamily={"body"}
                         >
-                          John Doe
+                          {userData.username}
                         </Heading>
                         <Text color={"gray.500"}>Frontend Developer</Text>
                       </Stack>
