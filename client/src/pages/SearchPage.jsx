@@ -1,7 +1,8 @@
-// Import the `useParams()` hook
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
+import { QUERY_GRAB_API } from "../utils/queries";
+import { searchFoodAPI } from "../utils/API";
 import SideBarNav from "../components/SideNavBar/SideNavBar";
 import HeaderBar from "../components/Header/Header";
 import {
@@ -18,15 +19,50 @@ import {
 } from "@chakra-ui/react";
 
 const SearchPage = () => {
-  const [searchParam, setSearchParam] = useState("");
+  const { loading, data } = useQuery(QUERY_GRAB_API);
+  const apiData = data?.grabAPI || {};
 
-  const onClickHandler = (event) => {
-    setSearchParam(event.target.textContent);
+  const [dietType, setSearchParam] = useState("");
+  const [query, setQuery] = useState("");
+  const [recipes, setRecipes] = useState([]);
+  console.log(recipes);
+
+  const onClickHandler = (dietRestriction) => {
+    if (dietType === dietRestriction) {
+      setSearchParam(null);
+    } else {
+      setSearchParam(dietRestriction);
+    }
   };
-  console.log(searchParam);
 
-  const submitHandler = (event) => {
+  const isSelected = (dietRestriction) => {
+    return dietType === dietRestriction;
+  };
+
+  const onChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setQuery(value);
+  };
+
+  const submitHandler = async (event) => {
     event.preventDefault();
+
+    if (!query) {
+      return false;
+    }
+
+    try {
+      const response = await searchFoodAPI(
+        query,
+        apiData.api_id,
+        apiData.api_key,
+        dietType
+      );
+      console.log(response);
+      const searchData = await response.json();
+
+      setRecipes(searchData.recipes);
+    } catch (error) {}
   };
 
   const styles = {
@@ -47,6 +83,9 @@ const SearchPage = () => {
       position: "relative",
       width: "7vw",
     },
+    searchContainer: {
+      width: "100vw",
+    },
   };
 
   return (
@@ -59,41 +98,71 @@ const SearchPage = () => {
           <div className="sideBarNav" style={styles.sideBarNav}>
             <SideBarNav />
           </div>
-          <div className="searchContainer">
-            <form action="" id="searchForm" onSubmit={submitHandler}>
+          <div className="searchContainer" style={styles.searchContainer}>
+            <form id="searchForm" onSubmit={submitHandler}>
               <div id="input">
-                <label htmlFor="searchBar">Search</label>
                 <Input
                   id="searchBar"
                   placeholder="Search for Recipes"
-                  name="search"
+                  name="query"
+                  value={query}
+                  onChange={onChangeHandler}
                   type="text"
                 ></Input>
-                <button id="searchBtn">Search</button>
+                <button type="submit" id="searchBtn">
+                  Search
+                </button>
               </div>
               <div className="dietRestrictions" id="HStack">
                 <h2>Diet Restrictions:</h2>
                 <HStack className="dietRestrictionsContainer">
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Dairy-Free
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("balanced") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("balanced")}
+                  >
+                    Balanced
                   </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Gluten-Free
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("high-fiber") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("high-fiber")}
+                  >
+                    High Fiber
                   </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Vegetarian
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("high-protein") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("high-protein")}
+                  >
+                    High Protein
                   </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Vegan
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-carb") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-carb")}
+                  >
+                    Low Carb
                   </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Soy-Free
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-fat") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-fat")}
+                  >
+                    Low Fat
                   </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Tree Nut-Free
-                  </div>
-                  <div className="dietRestriction" onClick={onClickHandler}>
-                    Keto-Friendly
+                  <div
+                    className={`dietRestriction ${
+                      isSelected("low-sodium") ? "selected" : ""
+                    }`}
+                    onClick={() => onClickHandler("low-sodium")}
+                  >
+                    Low Sodium
                   </div>
                 </HStack>
               </div>

@@ -35,12 +35,10 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-      console.log(data.login);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);

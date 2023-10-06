@@ -15,17 +15,17 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('savedRecipes');
       }
       throw AuthenticationError;
     },
-    searchFood: async (_, { query }) => {
+    grabAPI: async () => {
       try {
-        console.log(API_ID);
-        const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${API_ID}&app_key=${API_KEY}`)
-        const data = await response.json()
-        console.log(data);
-        return data
+        const api = {
+          api_id:API_ID,
+          api_key:API_KEY
+        }
+        return api
       } catch (error) {
         return error
       }

@@ -11,12 +11,19 @@ const Home = () => {
       alignItems: "stretch",
       height: "100vh",
     },
-    headerBar: {},
+    mainFlexContainer: {
+      display: "inline-flex",
+      justifyContent: "flex-start",
+      alignContent: "flex-start",
+    },
     sideBarNav: {
       display: "inline-flex",
       flexDirection: "column",
       position: "relative",
       width: "7vw",
+    },
+    searchContainer: {
+      width: "100vw",
     },
   };
   return (
