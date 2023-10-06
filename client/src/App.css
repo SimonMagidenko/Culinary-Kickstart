@@ -9,7 +9,24 @@
 }
 
 .selected {
-  background-color: red;
+  background-color: #ff6347;
+}
+
+#searchBtn {
+  background-color: wheat;
+  padding: 1em;
+  border-radius: 10px;
+  margin: 1em;
+}
+
+#searchBar {
+  width: 75%;
+}
+
+#searchForm {
+  margin: 0 auto;
+  width: 45%;
+
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
