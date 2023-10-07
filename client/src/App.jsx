@@ -8,6 +8,9 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import HeaderBar from "../src/components/Header/Header";
+
+
 
 const theme = extendTheme({
   colors: {
@@ -49,6 +52,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
+        <HeaderBar />
         <Outlet />
       </ApolloProvider>
     </ChakraProvider>
