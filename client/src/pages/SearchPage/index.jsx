@@ -1,10 +1,8 @@
-import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_GRAB_API } from "../../utils/queries";
 import { searchFoodAPI } from "../../utils/API";
 import SideBarNav from "../../components/SideNavBar/SideNavBar";
-import HeaderBar from "../../components/Header/Header";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import {
   Button,
@@ -70,9 +68,6 @@ const SearchPage = () => {
   return (
     <>
       <div className="main">
-        <div className="headerBar">
-          <HeaderBar />
-        </div>
         <div className="mainFlexContainer">
           <div className="sideBarNav">
             <SideBarNav />
