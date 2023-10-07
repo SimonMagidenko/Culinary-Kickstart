@@ -2,9 +2,14 @@
   padding: 2%;
   background-color: wheat;
   border-radius: 25px;
+  border: 2px solid;
 }
 
 .dietRestriction:hover {
+  border-color: #ff6347;
+  color: white;
+  box-shadow: 0 0.5em 0.5em -0.4em #ff6347;
+  transform: translateY(-0.25em);
   cursor: pointer;
 }
 
@@ -19,8 +24,18 @@
   margin: 1em;
 }
 
+#searchBtn:hover {
+  border-color: #ff6347;
+  color: white;
+  box-shadow: 0 0.5em 0.5em -0.4em #ff6347;
+  transform: translateY(-0.25em);
+  cursor: pointer;
+}
+
+
 #searchBar {
   width: 75%;
+  border-color: #000000;
 }
 
 #searchForm {

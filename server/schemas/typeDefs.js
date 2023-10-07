@@ -17,7 +17,7 @@ const typeDefs = `
     _id: ID
     name: String
     reviews:[Review]
-    ingredient: [String]
+    ingredients: [String]
     image: String
   }
 
@@ -36,11 +36,15 @@ const typeDefs = `
     user(username: String!): User
     me: User
     grabAPI: API
+    getRecipes: [Recipe]!
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addReview(userID: String!, text: String!): Review!
+    addRecipe(name: String, ingredients: [String]): Recipe!
+    saveRecipe(userId: ID!, name: String!, ingredients: [String]!): Recipe!
   }
 `;
 

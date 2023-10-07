@@ -22,15 +22,32 @@ const resolvers = {
     grabAPI: async () => {
       try {
         const api = {
-          api_id:API_ID,
-          api_key:API_KEY
+          api_id: API_ID,
+          api_key: API_KEY
         }
         return api
       } catch (error) {
         return error
       }
-    }
+    },
+    getRecipes: async (_, __, context) => {
+      if (!context.user) {
+        throw new Error('Must be logged in to view saved recipes.');
+      }
+
+      try {
+        const user = await User.findById(context.user._id).populate('savedRecipes');
+
+        if (!user) {
+          throw new Error('User not found.');
+        }
+        return user.savedRecipes;
+      } catch (error) {
+        throw new Error('Failed to fetch recipes by current user');
+      }
+    },
   },
+
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -54,6 +71,39 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addReview: async (_, { userID, text }) => {
+      try {
+        const savedReview = await Review.create({ userID, text });
+        return savedReview;
+      } catch (error) {
+        throw new Error('Failed to add review');
+      }
+    },
+    saveRecipe: async (_, { userId, name, ingredients }) => {
+      try {
+
+        const savedRecipe = await Recipe.create({ userId, name, ingredients });
+
+
+        await User.findByIdAndUpdate({ _id: context.user._id }), {
+          $addToSet: { savedRecipes: savedRecipe._id },
+        };
+
+        return savedRecipe;
+      } catch (error) {
+        throw new Error('Failed to add recipe to user');
+      }
+    },
+    addRecipe: async (_, { name }) => {
+      try {
+
+        const savedRecipe = await Recipe.create({ name });
+
+        return savedRecipe;
+      } catch (error) {
+        throw new Error('Failed to add recipe.');
+      }
     },
   },
 };
