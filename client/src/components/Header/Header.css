@@ -3,5 +3,17 @@
   color: #fdf5e6;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 68%;
+}
+
+#title {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+}
+
+.button {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
 }

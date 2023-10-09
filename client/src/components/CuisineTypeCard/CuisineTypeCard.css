@@ -1,0 +1,5 @@
+.cuisineTypeCard {
+  flex: 0 0 calc(25% - 5px);
+  margin: 5px;
+  box-sizing: border-box;
+}
