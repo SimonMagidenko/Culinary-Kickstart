@@ -3,21 +3,12 @@ import {
   Box,
   Flex,
   Avatar,
-  HStack,
-  Text,
-  IconButton,
   Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
   useColorModeValue,
-  Stack,
 } from "@chakra-ui/react";
 import "./Header.css";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import * as LuIcon from "react-icons/lu";
 
@@ -31,7 +22,7 @@ export default function HeaderBar() {
               <LuIcon.LuChefHat size={"35px"} />
             </Link>
             <Link to={"/"}>
-              <h1>Culinary Kickstart</h1>
+              <h1 id="title">Welcome to Culinary Kickstart</h1>
             </Link>
           </div>
           <Flex alignItems={"center"}>
