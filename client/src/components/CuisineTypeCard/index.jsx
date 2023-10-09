@@ -1,9 +1,9 @@
-import "./MealTypeCard.css";
+import "./CuisineTypeCard.css";
 import { Box, Center, Heading, Stack, Image } from "@chakra-ui/react";
 
-const MealTypeCard = ({ title, imageSrc }) => {
+const CuisineTypeCard = ({ title, imageSrc }) => {
   return (
-    <div className="mealTypeCard">
+    <div className="cuisineTypeCard">
       <Center py={12}>
         <Box
           role={"group"}
@@ -53,4 +53,4 @@ const MealTypeCard = ({ title, imageSrc }) => {
   );
 };
 
-export default MealTypeCard;
+export default CuisineTypeCard;

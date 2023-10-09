@@ -22,12 +22,11 @@ import {
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
-  const userData = data?.me || {}
+  const userData = data?.me || {};
 
   const handleLogout = () => {
-    Auth.logout()
-    
-  }
+    Auth.logout();
+  };
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -36,16 +35,10 @@ const Profile = () => {
   if (!userData.username) {
     return (
       <div className="main">
-      <h4 className="text-center">
-        You need to be logged in to see this. Use the navigation links below to
-        sign up or log in!
-        <h1>
-        <Link to='/login'>Login Here!</Link>
-        </h1>
-        <h1>
-        <Link to='/signup'>Signup Here!</Link>
-        </h1>
-      </h4>
+        <h4 className="text-center">
+          You need to be logged in to see this. Please Login or Create an
+          Account to view your profile page.
+        </h4>
       </div>
     );
   }
@@ -53,7 +46,7 @@ const Profile = () => {
     <>
       <div className="main">
         <div className="mainFlexContainer">
-        <div className="sideBarNav">
+          <div className="sideBarNav">
             <SideBarNav />
           </div>
           <div className="Container pl-5">

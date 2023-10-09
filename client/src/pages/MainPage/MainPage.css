@@ -1,20 +1,38 @@
 .mainPageContainer {
   display: flex;
+  overflow-y: auto;
+  height: 100vh;
 }
 
 .mainPageContentContainer {
   flex: 1;
 }
 
-#mealTypeHeading {
+#mainPageHeading {
   text-align: center;
-
+  padding-top: 15px;
+  margin-bottom: 0px;
   font-family: "Caveat", cursive;
   font-family: "Preahvihear", sans-serif;
   font-family: "Young Serif", serif;
 }
 
+#categoryHeading {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+  padding-left: 30px;
+}
+
 .mealTypeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.cuisineTypeContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

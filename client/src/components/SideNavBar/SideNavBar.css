@@ -29,17 +29,12 @@
 .nav-menu {
   background-color: var(--navBg);
   width: 160px;
-  height: 100vh;
+  height: 1000px;
   display: flex;
   flex-direction: column;
   top: 0;
   left: -100%;
   transition: 850ms;
-}
-
-.nav-menu.active {
-  left: 0;
-  transition: 350ms;
 }
 
 .nav-text {
