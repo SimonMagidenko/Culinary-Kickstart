@@ -56,7 +56,9 @@ const RecipeCard = (props) => {
                   <br />
                   <strong>Dish Type:</strong> {data.recipe.dishType}
                   <br />
-                  <strong>Calories:</strong> {data.recipe.calories.toFixed(2)}
+                  <strong>Servings:</strong> {data.recipe.yield}
+                  <br />
+                  <strong>Calories per serving:</strong> {Math.floor(data.recipe.calories/data.recipe.yield)}
                 </Text>
               </CardBody>
 

@@ -7,7 +7,6 @@ export const QUERY_USER = gql`
     username
     email
     }
-  }
 }
 `;
 
@@ -28,7 +27,6 @@ export const QUERY_ME = gql`
     email
     }
   }
-}
 `;
 export const QUERY_RECIPE = gql`
   query searchRecipe($query: String!) {
@@ -52,7 +50,6 @@ export const QUERY_USERS = gql`
     username
     email
     }
-  }
 }
 `;
 export const QUERY_RECIPES = gql`

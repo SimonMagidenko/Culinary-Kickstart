@@ -139,13 +139,8 @@ const SearchPage = () => {
                 </HStack>
               </div>
             </form>
-<<<<<<< HEAD
-            <div className="pl-5 ml-5">
-              <h2>Search Results:</h2>
-=======
             <h2 className="headings">Search Results:</h2>
             <div className="searchResultsGridContainer">
->>>>>>> 22d777e6d8c370bd958099c669c6ddfdf2a67966
               <RecipeCard recipes={recipes}></RecipeCard>
             </div>
           </div>
