@@ -1,17 +1,41 @@
-.main {
+.mainPageContainer {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
   height: 100vh;
 }
 
-.sideBarNav {
-  display: inline-flex;
-  flex-direction: column;
-  position: relative;
-  width: 7vw;
+.mainPageContentContainer {
+  flex: 1;
 }
 
-.searchContainer {
-  width: 100vw;
+#mainPageHeading {
+  text-align: center;
+  padding-top: 15px;
+  margin-bottom: 0px;
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+}
+
+#categoryHeading {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+  padding-left: 30px;
+}
+
+.mealTypeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.cuisineTypeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
 }

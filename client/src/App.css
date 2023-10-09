@@ -3,6 +3,10 @@
   background-color: wheat;
   border-radius: 25px;
   border: 2px solid;
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+  white-space: nowrap;
 }
 
 .dietRestriction:hover {
@@ -13,8 +17,50 @@
   cursor: pointer;
 }
 
+.instructionsAnchor:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
 .selected {
   background-color: #ff6347;
+}
+
+.image {
+  padding: 20px 10px 10px 10px;
+}
+
+.searchResultCard {
+  margin: 10px;
+  background-color: #fdf5e6 !important;
+  border: solid 2px black !important;
+}
+
+.loginForm {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 25px;
+}
+
+.loginPage {
+  background-color: #fdf5e6;
+  overflow-y: auto;
+}
+
+.signUpPage {
+  background-color: #fdf5e6;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+#cardHeading {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+}
+
+#recipeCardButtons {
+  margin-right: 10px;
 }
 
 #searchBtn {
@@ -22,6 +68,10 @@
   padding: 1em;
   border-radius: 10px;
   margin: 1em;
+  border: 2px solid;
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
 }
 
 #searchBtn:hover {
@@ -31,7 +81,6 @@
   transform: translateY(-0.25em);
   cursor: pointer;
 }
-
 
 #searchBar {
   width: 75%;

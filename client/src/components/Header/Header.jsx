@@ -3,21 +3,12 @@ import {
   Box,
   Flex,
   Avatar,
-  HStack,
-  Text,
-  IconButton,
   Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
   useColorModeValue,
-  Stack,
 } from "@chakra-ui/react";
 import "./Header.css";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import * as LuIcon from "react-icons/lu";
 
@@ -31,17 +22,29 @@ export default function HeaderBar() {
               <LuIcon.LuChefHat size={"35px"} />
             </Link>
             <Link to={"/"}>
-              <h1>Culinary Kickstart</h1>
+              <h1 id="title">Welcome to Culinary Kickstart</h1>
             </Link>
           </div>
           <Flex alignItems={"center"}>
             <Link to={"/login"}>
-              <Button variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
+              <Button
+                className="button"
+                variant={"solid"}
+                colorScheme={"gray"}
+                size={"sm"}
+                mr={4}
+              >
                 Login
               </Button>
             </Link>
             <Link to={"/signup"}>
-              <Button variant={"solid"} colorScheme={"teal"} size={"sm"} mr={4}>
+              <Button
+                className="button"
+                variant={"solid"}
+                colorScheme={"gray"}
+                size={"sm"}
+                mr={4}
+              >
                 Sign Up
               </Button>
             </Link>
@@ -54,12 +57,7 @@ export default function HeaderBar() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar
-                    size={"sm"}
-                    src={
-                      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                    }
-                  />
+                  <Avatar border="solid 1px white" size={"sm"} src={""} />
                 </MenuButton>
               </Link>
             </Menu>

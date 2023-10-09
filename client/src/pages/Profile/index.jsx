@@ -22,7 +22,7 @@ import {
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
-  const userData = data?.me || {}
+  const userData = data?.me || {};
 
   const handleLogout = () => {
     Auth.logout()

@@ -12,18 +12,6 @@ import HeaderBar from "../src/components/Header/Header";
 
 
 
-const theme = extendTheme({
-  colors: {
-    brand: {
-      red: "#FF6347",
-      white: "#FDF5E6",
-      green: "#556B2F",
-      yellow: "#FFD700",
-      grey: "#CCCCCC",
-      darkGrey: "#333333",
-    },
-  },
-});
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -50,7 +38,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <ApolloProvider client={client}>
         <HeaderBar />
         <Outlet />

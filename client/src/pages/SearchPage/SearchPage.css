@@ -1,14 +1,11 @@
-.main {
+.mainPageContainer {
   display: flex;
-  flex-direction: column;
-  align-items: "stretch";
-  height: "100vh";
+  overflow-y: auto;
+  height: 100vh;
 }
 
-.mainFlexContainer {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-content: flex-start;
+.mainPageContentContainer {
+  flex: 1;
 }
 
 .sideBarNav {
@@ -18,6 +15,20 @@
   width: 7vw;
 }
 
-.searchContainer {
-  width: 100vw;
+.searchFormContainer {
+  border: none;
+}
+
+.headings {
+  font-family: "Caveat", cursive;
+  font-family: "Preahvihear", sans-serif;
+  font-family: "Young Serif", serif;
+  padding-left: 10px;
+}
+
+.searchResultsGridContainer {
+  overflow-y: auto;
+  height: 100vh;
+  max-height: calc(100vh - 100px);
+  padding: 15px;
 }
