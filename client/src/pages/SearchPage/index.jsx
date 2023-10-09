@@ -1,10 +1,8 @@
-import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { QUERY_GRAB_API } from "../../utils/queries";
 import { searchFoodAPI } from "../../utils/API";
 import SideBarNav from "../../components/SideNavBar/SideNavBar";
-import HeaderBar from "../../components/Header/Header";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import {
   Button,
@@ -64,15 +62,12 @@ const SearchPage = () => {
       const searchData = await response.json();
 
       setRecipes(searchData.hits);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
     <>
       <div className="main">
-        <div className="headerBar">
-          <HeaderBar />
-        </div>
         <div className="mainFlexContainer">
           <div className="sideBarNav">
             <SideBarNav />
@@ -96,49 +91,43 @@ const SearchPage = () => {
                 <h2>Diet Restrictions:</h2>
                 <HStack className="dietRestrictionsContainer">
                   <div
-                    className={`dietRestriction ${
-                      isSelected("balanced") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("balanced") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("balanced")}
                   >
                     Balanced
                   </div>
                   <div
-                    className={`dietRestriction ${
-                      isSelected("high-fiber") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("high-fiber") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("high-fiber")}
                   >
                     High Fiber
                   </div>
                   <div
-                    className={`dietRestriction ${
-                      isSelected("high-protein") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("high-protein") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("high-protein")}
                   >
                     High Protein
                   </div>
                   <div
-                    className={`dietRestriction ${
-                      isSelected("low-carb") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("low-carb") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("low-carb")}
                   >
                     Low Carb
                   </div>
                   <div
-                    className={`dietRestriction ${
-                      isSelected("low-fat") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("low-fat") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("low-fat")}
                   >
                     Low Fat
                   </div>
                   <div
-                    className={`dietRestriction ${
-                      isSelected("low-sodium") ? "selected" : ""
-                    }`}
+                    className={`dietRestriction ${isSelected("low-sodium") ? "selected" : ""
+                      }`}
                     onClick={() => onClickHandler("low-sodium")}
                   >
                     Low Sodium

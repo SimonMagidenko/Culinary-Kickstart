@@ -1,6 +1,9 @@
-import { Navigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_USER, QUERY_ME } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
+import SideBarNav from "../../components/SideNavBar/SideNavBar";
+import Auth from "../../utils/auth";
+import "./Profile.css";
 import {
   Heading,
   Avatar,
@@ -15,16 +18,16 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-import "./Profile.css";
-// import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import SideBarNav from "../../components/SideNavBar/SideNavBar";
-import HeaderBar from "../../components/Header/Header";
-import Auth from "../../utils/auth";
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
   const userData = data?.me || {}
+
+  const handleLogout = () => {
+    Auth.logout()
+    
+  }
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -32,23 +35,28 @@ const Profile = () => {
 
   if (!userData.username) {
     return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
+      <div className="main">
+      <h4 className="text-center">
+        You need to be logged in to see this. Use the navigation links below to
         sign up or log in!
+        <h1>
+        <Link to='/login'>Login Here!</Link>
+        </h1>
+        <h1>
+        <Link to='/signup'>Signup Here!</Link>
+        </h1>
       </h4>
+      </div>
     );
   }
   return (
     <>
       <div className="main">
-        <div className="headerBar">
-          <HeaderBar />
-        </div>
         <div className="mainFlexContainer">
-          <div className="sideBarNav">
+        <div className="sideBarNav">
             <SideBarNav />
           </div>
-          <div className="searchContainer">
+          <div className="Container pl-5">
             <Grid
               h="100vh"
               w="100vw"
@@ -72,7 +80,7 @@ const Profile = () => {
                     overflow={"hidden"}
                   >
                     <Image
-                      h={"250px"}
+                      h={"375px"}
                       w={"full"}
                       src={
                         "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
@@ -101,20 +109,20 @@ const Profile = () => {
                         >
                           {userData.username}
                         </Heading>
-                        <Text color={"gray.500"}>Frontend Developer</Text>
+                        <Text color={"gray.500"}>{userData.email}</Text>
                       </Stack>
 
                       <Stack direction={"row"} justify={"center"} spacing={6}>
                         <Stack spacing={0} align={"center"}>
                           <Text fontWeight={600}>23k</Text>
                           <Text fontSize={"sm"} color={"gray.500"}>
-                            Followers
+                            Saved Recipes
                           </Text>
                         </Stack>
                         <Stack spacing={0} align={"center"}>
                           <Text fontWeight={600}>23k</Text>
                           <Text fontSize={"sm"} color={"gray.500"}>
-                            Followers
+                            Attempted Recipes
                           </Text>
                         </Stack>
                       </Stack>
@@ -129,8 +137,9 @@ const Profile = () => {
                           transform: "translateY(-2px)",
                           boxShadow: "lg",
                         }}
+                        onClick={handleLogout}
                       >
-                        Follow
+                        Sign Out
                       </Button>
                     </Box>
                   </Box>

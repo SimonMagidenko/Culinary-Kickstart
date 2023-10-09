@@ -8,6 +8,9 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import HeaderBar from "../src/components/Header/Header";
+
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,6 +40,7 @@ function App() {
   return (
     <ChakraProvider>
       <ApolloProvider client={client}>
+        <HeaderBar />
         <Outlet />
       </ApolloProvider>
     </ChakraProvider>

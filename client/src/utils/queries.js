@@ -85,3 +85,18 @@ export const QUERY_USERS = gql`
   }
 }`
   ;
+export const QUERY_RECIPES = gql`
+  query getRecipes {
+  getRecipes {
+    _id
+    name
+    ingredient
+    image
+    reviews {
+      _id
+      userID
+      text
+    }
+  }
+}`
+  ;
