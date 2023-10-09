@@ -26,7 +26,6 @@ const Profile = () => {
 
   const handleLogout = () => {
     Auth.logout()
-    
   }
 
   if (loading) {
@@ -35,17 +34,15 @@ const Profile = () => {
 
   if (!userData.username) {
     return (
-      <div className="main">
-      <h4 className="text-center">
+      <div className="main text-center">
         You need to be logged in to see this. Use the navigation links below to
         sign up or log in!
         <h1>
-        <Link to='/login'>Login Here!</Link>
+          <Link to='/login'>Login Here!</Link>
         </h1>
         <h1>
-        <Link to='/signup'>Signup Here!</Link>
+          <Link to='/signup'>Signup Here!</Link>
         </h1>
-      </h4>
       </div>
     );
   }
@@ -53,7 +50,7 @@ const Profile = () => {
     <>
       <div className="main">
         <div className="mainFlexContainer">
-        <div className="sideBarNav">
+          <div className="sideBarNav">
             <SideBarNav />
           </div>
           <div className="Container pl-5">

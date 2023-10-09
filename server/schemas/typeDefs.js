@@ -15,9 +15,9 @@ const typeDefs = `
 
   type Recipe {
     _id: ID
-    name: String
+    name: String!
     reviews:[Review]
-    ingredients: [String]
+    ingredients: [String]!
     image: String
   }
 
@@ -43,7 +43,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addReview(userID: String!, text: String!): Review!
-    addRecipe(name: String, ingredients: [String]): Recipe!
+    addRecipe(name: String!, ingredients: [String]!): Recipe!
     saveRecipe(userId: ID!, name: String!, ingredients: [String]!): Recipe!
   }
 `;

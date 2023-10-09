@@ -40,6 +40,7 @@ const RecipeCard = (props) => {
             {props.recipes.map((data, i) => {
                 return (
                     <Card
+                        
                         key={i}
                         direction={{ base: "column", sm: "row" }}
                         overflow="hidden"
@@ -61,7 +62,9 @@ const RecipeCard = (props) => {
                                     <br />
                                     Dish Type: {data.recipe.dishType}
                                     <br />
-                                    Calories: {data.recipe.calories.toFixed(2)}
+                                    Servings: {data.recipe.yield}
+                                    <br />
+                                    Calories per serving: {Math.floor(data.recipe.calories.toFixed(2)/data.recipe.yield)}
                                 </Text>
                             </CardBody>
 
