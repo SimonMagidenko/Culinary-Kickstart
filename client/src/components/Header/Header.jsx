@@ -57,7 +57,13 @@ export default function HeaderBar() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar border="solid 1px white" size={"sm"} src={""} />
+                  <Avatar
+                    border="solid 1px white"
+                    size={"sm"}
+                    src={
+                      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2517&q=80"
+                    }
+                  />
                 </MenuButton>
               </Link>
             </Menu>
