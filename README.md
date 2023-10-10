@@ -1,5 +1,11 @@
 # Culinary Kickstart
 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+
 ## Description
 Welcome to Culinary Kickstart, your ultimate destination for exploring, discovering, and sharing delicious recipes from around the world. Whether you're an experienced chef or a kitchen newbie, Culinary Kickstart is here to inspire your culinary adventures.
 
@@ -21,35 +27,34 @@ Culinary Kickstart is an online platform designed to help food enthusiasts find,
 ## Getting Started
 To get started with Culinary Kickstart, follow these simple steps:
 
-Sign Up: Create an account by providing your email address, creating a username and setting a password. <br>
-Explore Recipes: Use the search bar to find recipes that pique your interest. <br>
-Save Favorites: When you find a recipe you love, click the "Save" button to add it to your profile. <br>
-Leave Reviews: After trying a recipe, leave a review to share your experience with the community.
-Contributing
+**Sign Up**: Create an account by providing your email address, creating a username and setting a password. <br>
+**Explore Recipes**: Use the search bar to find recipes that pique your interest. <br>
+**Save Favorites**: When you find a recipe you love, click the "Save" button to add it to your profile. <br>
+**Leave Reviews**: After trying a recipe, leave a review to share your experience with the community.
 
 ## Usage
 ### User Registration and Profiles
-Sign Up: Create a user account to unlock all the features Culinary Kickstart has to offer. <br>
-User Profiles: Personalize your profile with a profile picture, bio, and more.
+**Sign Up**: Create a user account to unlock all the features Culinary Kickstart has to offer. <br>
+**User Profiles**: Personalize your profile with a profile picture, bio, and more.
 
 ### Search for Recipes
-Recipe Search: Find recipes by simply typing in ingredients, dish names, or cuisine styles. <br>
-Filter Options: Narrow down your search using filters like dietary restrictions. <br>
-Recipe Details: Get detailed instructions, ingredients, and cooking tips for each recipe.
+**Recipe Search**: Find recipes by simply typing in ingredients, dish names, or cuisine styles. <br>
+**Filter Options**: Narrow down your search using filters like dietary restrictions. <br>
+**Recipe Details**: Get detailed instructions, ingredients, and cooking tips for each recipe.
 
 ### Saving Recipes
-Save Favorites: Keep track of your favorite recipes by saving them to your profile. <br>
-Create Collections: Organize your saved recipes into collections for easy access. <br>
-Cookbook: Create a digital cookbook of your go-to recipes.
+**Save Favorites**: Keep track of your favorite recipes by saving them to your profile. <br>
+**Create Collections**: Organize your saved recipes into collections for easy access. <br>
+**Cookbook**: Create a digital cookbook of your go-to recipes.
 
 ### Leaving and Viewing Reviews
-Leave Reviews: Share your thoughts and feedback on recipes by leaving reviews and ratings.
-View Reviews: Check out what other users have to say about the recipes you're interested in.
-Community Engagement: Join the culinary conversation by engaging with the community through comments and discussions.
+**Leave Reviews**: Share your thoughts and feedback on recipes by leaving reviews and ratings.
+**View Reviews**: Check out what other users have to say about the recipes you're interested in.
+**Community Engagement**: Join the culinary conversation by engaging with the community through comments and discussions.
 
 ### Deployed Site and Repo
-- URL: 
-- Repo: https://github.com/SimonMagidenko/Culinary-Kickstart
+- **URL**: 
+- **Repo**: https://github.com/SimonMagidenko/Culinary-Kickstart
 
 ## Contributors
 - Simon Magidenko: https://github.com/SimonMagidenko
@@ -57,4 +62,5 @@ Community Engagement: Join the culinary conversation by engaging with the commun
 - Harry Felty : https://github.com/HarryFelty
 
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <br>
 Culinary Kickstart is licensed under the MIT License. You are free to use, modify, and distribute the software as per the terms of this license.
