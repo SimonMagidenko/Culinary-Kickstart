@@ -52,8 +52,12 @@ To get started with Culinary Kickstart, follow these simple steps:
 **View Reviews**: Check out what other users have to say about the recipes you're interested in.
 **Community Engagement**: Join the culinary conversation by engaging with the community through comments and discussions.
 
+![Screenshot 2023-10-10 101724](https://github.com/SimonMagidenko/Culinary-Kickstart/assets/125701349/61986e9b-8ece-4262-8e2b-37494629eec9)
+
+![Screenshot 2023-10-10 110751](https://github.com/SimonMagidenko/Culinary-Kickstart/assets/125701349/b2203b0c-8f36-4dcb-8171-39962267226b)
+
 ### Deployed Site and Repo
-- **URL**: 
+- **URL**: https://culinary-kickstart-a5ceb2617d5b.herokuapp.com/
 - **Repo**: https://github.com/SimonMagidenko/Culinary-Kickstart
 
 ## Contributors
