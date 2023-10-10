@@ -54,6 +54,16 @@ const Login = (props) => {
   return (
     <div className="loginPage">
       <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+      <Flex flex={1} alignItems="stretch">
+          <Image
+            alt={"Login Image"}
+            objectFit={"cover"}
+            src={
+              "https://images.unsplash.com/photo-1612036167614-ae83edbce270?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
+            }
+            style={{ maxHeight: "100vh", width: "50vw" }}
+          />
+        </Flex>
         <Flex p={8} flex={1} align={"center"} justify={"center"}>
           <Stack className="loginForm" spacing={4} w={"full"} maxW={"md"}>
             <Heading fontSize={"2xl"}>Sign in to your account</Heading>
@@ -98,16 +108,6 @@ const Login = (props) => {
               </Button>
             </Stack>
           </Stack>
-        </Flex>
-        <Flex flex={1} alignItems="stretch">
-          <Image
-            alt={"Login Image"}
-            objectFit={"cover"}
-            src={
-              "https://images.unsplash.com/photo-1612036167614-ae83edbce270?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80"
-            }
-            style={{ maxHeight: "100%", width: "auto" }}
-          />
         </Flex>
       </Stack>
     </div>

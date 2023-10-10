@@ -6,18 +6,7 @@ export const QUERY_USER = gql`
     _id
     username
     email
-    savedRecipes {
-      _id
-      name
-      ingredient
-      image
-      reviews {
-        _id
-        userID
-        text
-      }
     }
-  }
 }
 `;
 
@@ -36,19 +25,8 @@ export const QUERY_ME = gql`
     _id
     username
     email
-    savedRecipes {
-      _id
-      name
-      image
-      ingredient
-      reviews {
-        _id
-        text
-        userID
-      }
     }
   }
-}
 `;
 export const QUERY_RECIPE = gql`
   query searchRecipe($query: String!) {
@@ -63,28 +41,17 @@ export const QUERY_RECIPE = gql`
       userID
     }
   }
-}`
-  ;
+}
+`;
 export const QUERY_USERS = gql`
   query users {
   users {
     _id
     username
     email
-    savedRecipes {
-      _id
-      name
-      ingredient
-      image
-      reviews {
-        _id
-        userID
-        text
-      }
     }
-  }
-}`
-  ;
+}
+`;
 export const QUERY_RECIPES = gql`
   query getRecipes {
   getRecipes {
@@ -98,5 +65,5 @@ export const QUERY_RECIPES = gql`
       text
     }
   }
-}`
-  ;
+}
+`;
