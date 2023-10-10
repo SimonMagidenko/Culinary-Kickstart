@@ -21,19 +21,8 @@ export const ADD_USER = gql`
       _id
       username
       email
-      savedRecipes {
-        _id
-        name
-        ingredient
-        image
-        reviews {
-          _id
-          text
-          userID
-        }
       }
     }
-  }
 }
 `;
 export const SAVE_RECIPE = gql`
